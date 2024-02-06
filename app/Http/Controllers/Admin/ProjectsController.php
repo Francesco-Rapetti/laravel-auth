@@ -68,7 +68,8 @@ class ProjectsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $project = Project::find($id);
+        return view('admin.projects.edit', compact('project'));
     }
 
     /**
@@ -76,7 +77,16 @@ class ProjectsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $this->validation($request);
+
+        $project = Project::find($id);
+
+        $project->name = $request->name;
+        $project->description = $request->description;
+        $project->url = $request->url;
+        $project->image = $request->image;
+        $project->update();
+        return redirect()->route('admin.dashboard');
     }
 
     /**

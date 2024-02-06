@@ -14,9 +14,9 @@ body {
     -webkit-backdrop-filter: blur(14.3px);
 }
 
-.card {
+.card.glass {
     padding: 0px;
-    min-width: 250px;
+    width: 400px !important;
 }
 
 .card-img-top-container {

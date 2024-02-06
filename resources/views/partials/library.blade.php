@@ -16,7 +16,7 @@
                         </a>
 
                         @if (Route::getCurrentRoute()->uri == 'admin')
-                            <a href=""
+                            <a href="{{ route('admin.projects.edit', $project->id) }}"
                                 class="btn btn-warning me-3 w-25 d-flex justify-content-center align-items-center"><i
                                     class="fa-solid fa-pen fs-5"></i></a>
                             <a href=""

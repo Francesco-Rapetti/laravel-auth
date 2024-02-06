@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ProjectsController;
+use App\Models\Project;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +17,8 @@ use App\Http\Controllers\Admin\DashboardController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $projects = Project::all();
+    return view('welcome', compact('projects'));
 });
 
 Route::middleware(['auth'])
@@ -27,6 +30,8 @@ Route::middleware(['auth'])
         // - il percorso "/" diventa "admin/"
         // - il nome della rotta ->name("dashboard") diventa ->name("admin.dashboard")
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
+        Route::resource('projects', ProjectsController::class);
     });
 
 require __DIR__ . '/auth.php';
